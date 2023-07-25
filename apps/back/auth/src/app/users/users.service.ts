@@ -1,10 +1,5 @@
+import { User, dataAccess } from '@escola-de-ti/data-access';
 import { Injectable } from '@nestjs/common';
-
-interface User {
-  userId: number
-  username: string
-  password: string
-}
 
 @Injectable()
 export class UsersService {
@@ -22,6 +17,7 @@ export class UsersService {
   ];
 
   async findOne(username: string) {
+    dataAccess()
     return this.users.find(user => user.username === username);
   }
 }

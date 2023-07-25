@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { User } from '@escola-de-ti/data-access';
 
 export class AuthForm extends FormGroup {
   constructor() {
@@ -35,7 +36,7 @@ export class AppComponent {
 
   onSubmit() {
     this.httpClient
-      .post('/api/auth/login', this.form.value)
+      .post<User>('/api/auth/login', this.form.value)
       .subscribe(console.log)
   }
 }
