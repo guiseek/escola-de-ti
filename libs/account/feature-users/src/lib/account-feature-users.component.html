@@ -1,20 +1,9 @@
-<p>account-feature-users works!</p>
-
 <form [formGroup]="form" (submit)="onSubmit()">
   <label>
-    <input type="text" formControlName="name" placeholder="Nome" />
+    <input type="text" formControlName="username" />
   </label>
   <label>
-    <input type="text" formControlName="email" placeholder="E-mail" />
-  </label>
-  <label>
-    <input type="number" formControlName="age" placeholder="Idade" />
-  </label>
-  <label>
-    <input type="text" formControlName="username" placeholder="Usuário" />
-  </label>
-  <label>
-    <input type="password" formControlName="password" placeholder="Senha" />
+    <input type="password" formControlName="password" />
   </label>
 
   <button>Login</button>

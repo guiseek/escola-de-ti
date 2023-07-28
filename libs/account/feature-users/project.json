@@ -2,7 +2,7 @@
   "name": "account-feature-users",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/account/feature-users/src",
-  "prefix": "user",
+  "prefix": "escola-de-ti",
   "tags": ["type:feature", "scope:account"],
   "projectType": "library",
   "targets": {
