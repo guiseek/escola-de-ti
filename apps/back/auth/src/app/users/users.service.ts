@@ -1,27 +1,50 @@
 import { Injectable } from '@nestjs/common';
-
-interface User {
-  userId: number
-  username: string
-  password: string
-}
+import { User } from './entities/user.schema';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
-  private readonly users: User[] = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  async findOne(username: string) {
-    return this.users.find(user => user.username === username);
+  create(createUserDto: CreateUserDto): Promise<User> {
+    const createdUser = this.userModel.create(createUserDto);
+    return createdUser;
+  }
+
+  findOne(id: string) {
+    const findedUser = this.userModel.findById(id);
+    return findedUser;
+  }
+
+  findAll() {
+    const findedUsers = this.userModel.find();
+    return findedUsers;
+  }
+
+  update(id: string, updatedUserDto: UpdateUserDto) {
+    const updatedUser = this.userModel
+      .findByIdAndUpdate(
+        id,
+        {
+          name: updatedUserDto.name,
+          email: updatedUserDto.email,
+          password: updatedUserDto.password,
+          age: updatedUserDto.age,
+        },
+        { new: true }
+      )
+      .select('-password');
+    return updatedUser;
+  }
+
+  remove(id: string) {
+    const deletedUser = this.userModel
+      .findByIdAndDelete(id)
+      .select('-password');
+
+    return deletedUser;
   }
 }
