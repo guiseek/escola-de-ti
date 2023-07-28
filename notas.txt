@@ -1,0 +1,11 @@
+
+
+Ao cadastrar uma loja no insomnia, lembrar de buscar um UUID de um produto que já existe no banco e coloca-lo no campo products
+
+{
+	
+	"products": ["hashd81hah91-asd198881", "65asdasd912e-asd12wjas8"]
+	
+}
+
+
