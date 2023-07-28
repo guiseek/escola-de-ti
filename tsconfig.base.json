@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@escola-de-ti/account/feature-users": [
+        "libs/account/feature-users/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
