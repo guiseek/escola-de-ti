@@ -7,7 +7,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
       "options": {
-        "jestConfig": "apps/back/back-auth-e2e/jest.config.ts",
+        "jestConfig": "packages/back/back-auth-e2e/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -15,7 +15,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/back/back-auth-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": ["packages/back/back-auth-e2e/**/*.{js,ts}"]
       }
     }
   }

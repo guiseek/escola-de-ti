@@ -5,10 +5,8 @@ import { HttpClient } from '@angular/common/http';
 export class AuthForm extends FormGroup {
   constructor() {
     super({
-      age: new FormControl(''),
       name: new FormControl(''),
       email: new FormControl(''),
-      username: new FormControl(''),
       password: new FormControl(''),
     });
   }
@@ -20,6 +18,7 @@ export class AuthForm extends FormGroup {
   styleUrls: ['./account-feature-users.component.scss'],
 })
 export class AccountFeatureUsersComponent {
+
   httpClient = inject(HttpClient);
 
   form = new AuthForm();
@@ -29,4 +28,5 @@ export class AccountFeatureUsersComponent {
       .post('/api/users', this.form.value)
       .subscribe(console.log);
   }
+
 }

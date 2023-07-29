@@ -2,9 +2,9 @@
   "name": "front-mobile",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "escola-de-ti",
+  "prefix": "getup",
   "sourceRoot": "apps/front/mobile/src",
-  "tags": [],
+  "tags": ["type:app", "side:client"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

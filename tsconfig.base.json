@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@escola-de-ti/account/feature-users": [
+      "@praticando-monorepo/account/feature-users": [
         "libs/account/feature-users/src/index.ts"
       ]
     }

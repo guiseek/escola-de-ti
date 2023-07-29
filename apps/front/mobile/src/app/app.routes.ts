@@ -4,7 +4,7 @@ export const appRoutes: Route[] = [
   {
     path: '',
     loadChildren: () =>
-      import('@escola-de-ti/account/feature-users').then(
+      import('@praticando-monorepo/account/feature-users').then(
         (m) => m.AccountFeatureUsersModule
       ),
   },
