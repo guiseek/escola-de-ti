@@ -1,13 +1,13 @@
 {
   "name": "front-mobile-e2e",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/front/mobile-e2e/src",
+  "sourceRoot": "packages/front/mobile-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nx/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/front/mobile-e2e/cypress.config.ts",
+        "cypressConfig": "packages/front/mobile-e2e/cypress.config.ts",
         "devServerTarget": "front-mobile:serve:development",
         "testingType": "e2e"
       },
@@ -24,7 +24,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/front/mobile-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": ["packages/front/mobile-e2e/**/*.{js,ts}"]
       }
     }
   },

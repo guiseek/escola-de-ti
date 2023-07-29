@@ -3,7 +3,7 @@ export default {
   displayName: 'front-mobile',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/apps/front/mobile',
+  coverageDirectory: '../../../coverage/packages/front/mobile',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

@@ -1,38 +1,42 @@
 import { Injectable } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
+import { User } from './entities/user.entity';
 import { Model } from 'mongoose';
-import { User } from './schema/user.schema';
-import { CreateUserDto } from './dtos/create-user.dto';
-import { UpdateUserDto } from './dtos/update-user.dto';
-
+import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  async createOne(createUserDto: CreateUserDto): Promise<User> {
-    const createdUser = this.userModel.create(createUserDto);
+  constructor(@InjectModel(User.name) private userModel:Model<User>){}
 
-    return createdUser;
+  async hash(password:string){
+    const saltOrRounds = 10;
+    console.log(password)
+    const salt = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(password,saltOrRounds)
+    return hash
   }
 
-  async findOne(id: string) {
-    const findedUser = this.userModel.findById(id);
+  async create(createUserDto: CreateUserDto) {
 
-    return findedUser;
+    createUserDto.password= await this.hash(createUserDto.password)
+    return this.userModel.create(createUserDto);
   }
 
-  async findAll() {
-    const findedUsers = this.userModel.find();
-    return findedUsers;
+  findAll() {
+    return this.userModel.find({},{password:0});
   }
 
-  async updateOne(id: string, updateUserDto: UpdateUserDto) {
-    const updatedUser = this.userModel.findByIdAndUpdate(id, updateUserDto);
-    return updatedUser;
+  findOne(email: string) {
+    return this.userModel.findOne({email:email});
   }
 
-  async removeOne(id: string) {
-    const removedUser = this.userModel.findByIdAndRemove(id);
-    return removedUser;
+  update(email: string, updateUserDto: UpdateUserDto) {
+    return this.userModel.findOneAndUpdate({email:email},{updateUserDto});
+  }
+
+  remove(email: string) {
+    return this.userModel.findOneAndDelete({email:email});
   }
 }
