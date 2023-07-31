@@ -1,4 +1,13 @@
 .example-spacer {
     flex: 1 1 auto;
   }
-  
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+
+.form {
+    margin-top: 1em;
+}

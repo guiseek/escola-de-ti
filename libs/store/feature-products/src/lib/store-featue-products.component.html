@@ -20,8 +20,33 @@
     class="example-icon"
     aria-label="Example icon-button with share icon"
   >
-    <mat-icon>share</mat-icon>
+    <mat-icon>account_circle</mat-icon>
   </button>
 </mat-toolbar>
 
-<p>store-featue-products works!</p>
+<form [formGroup]="form">
+  <mat-form-field class="form" appearance="fill">
+    <mat-label>Fill Name field</mat-label>
+    <input formControlName="name" matInput placeholder="Placeholder" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field class="form" appearance="fill">
+    <mat-label>Fill description field</mat-label>
+    <input formControlName="description" matInput placeholder="Placeholder" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field class="form" appearance="fill">
+    <mat-label>Fill price field</mat-label>
+    <input formControlName="price" matInput placeholder="Placeholder" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field class="form" appearance="fill">
+    <mat-label>Fill quantity field</mat-label>
+    <input formControlName="quantity" matInput placeholder="Placeholder" />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <button class="submitButton" mat-stroked-button type="submit" (click)="onSubmit()">Submit</button>
+</form>
