@@ -17,6 +17,9 @@
     "paths": {
       "@escola-de-ti/account/feature-users": [
         "libs/account/feature-users/src/index.ts"
+      ],
+      "@escola-de-ti/store/feature-products": [
+        "libs/store/feature-products/src/index.ts"
       ]
     }
   },

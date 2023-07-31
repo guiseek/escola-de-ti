@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <a mat-button routerLink="/">Produtos</a>
+
+  <a mat-button routerLink="/users">Usuários</a>
+
+</mat-toolbar>
+
+<main>
+  <section>
+    <code>{{ products$ | async | json }}</code>
+  </section>
+
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>store-featue-products works!</h1>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input formControlName="name" matInput placeholder="Placeholder" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <input formControlName="description" matInput placeholder="Placeholder" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preço</mat-label>
+      <input formControlName="price" matInput placeholder="Ex.: 1.000,00" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Quantidade</mat-label>
+      <input formControlName="quantity" matInput placeholder="Ex.: 100" />
+    </mat-form-field>
+
+    <button mat-raised-button>Enviar</button>
+  </form>
+</main>
