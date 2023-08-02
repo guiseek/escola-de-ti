@@ -12,7 +12,7 @@ import { ProductModule } from './product/product.module';
     AuthModule,
     UsersModule,
     ProductModule,
-    MongooseModule.forRoot('mongodb://0.0.0.0:27017/nest'),
+    MongooseModule.forRoot('mongodb://0.0.0.0:27017/escola-ti'),
   ],
   controllers: [AppController],
   providers: [AppService],

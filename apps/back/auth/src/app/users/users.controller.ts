@@ -1,7 +1,16 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -9,26 +18,27 @@ export class UsersController {
 
   @Post()
   create(@Body() createUsetDto: CreateUserDto) {
-    return this.usersService.createOne(createUsetDto)
+    return this.usersService.createOne(createUsetDto);
   }
 
+  @UseGuards(AuthGuard)
   @Get()
   findAll() {
-    return this.usersService.findAll()
+    return this.usersService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id)
+    return this.usersService.findOne(id);
   }
 
   @Put(':id')
   updateOne(@Param('id') id: string, updateUserDto: UpdateUserDto) {
-    return this.usersService.updateOne(id, updateUserDto)
+    return this.usersService.updateOne(id, updateUserDto);
   }
 
   @Get(':id')
   removeOne(@Param('id') id: string) {
-    return this.usersService.removeOne(id)
+    return this.usersService.removeOne(id);
   }
 }

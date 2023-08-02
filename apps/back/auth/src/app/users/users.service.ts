@@ -9,30 +9,41 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
-  async createOne(createUserDto: CreateUserDto): Promise<User> {
-    const createdUser = this.userModel.create(createUserDto);
+  async createOne(createUserDto: CreateUserDto): Promise<string> {
+    this.userModel.create(createUserDto);
 
-    return createdUser;
+    return 'Ok';
   }
 
   async findOne(id: string) {
-    const findedUser = this.userModel.findById(id);
+    const findedUser = this.userModel.findById(id).select('-password');
+
+    return findedUser;
+  }
+
+  async findByUsername(username: string): Promise<any> {
+    console.log(username);
+    const findedUser = this.userModel.findOne({ username: username });
 
     return findedUser;
   }
 
   async findAll() {
-    const findedUsers = this.userModel.find();
+    const findedUsers = this.userModel.find().select('-password');
     return findedUsers;
   }
 
   async updateOne(id: string, updateUserDto: UpdateUserDto) {
-    const updatedUser = this.userModel.findByIdAndUpdate(id, updateUserDto);
+    const updatedUser = this.userModel
+      .findByIdAndUpdate(id, updateUserDto)
+      .select('password');
     return updatedUser;
   }
 
   async removeOne(id: string) {
-    const removedUser = this.userModel.findByIdAndRemove(id);
+    const removedUser = this.userModel
+      .findByIdAndRemove(id)
+      .select('-password');
     return removedUser;
   }
 }
