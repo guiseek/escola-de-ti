@@ -21,8 +21,7 @@ export class UsersService {
     return findedUser;
   }
 
-  async findByUsername(username: string): Promise<any> {
-    console.log(username);
+  async findByUsername(username: string) {
     const findedUser = this.userModel.findOne({ username: username });
 
     return findedUser;
