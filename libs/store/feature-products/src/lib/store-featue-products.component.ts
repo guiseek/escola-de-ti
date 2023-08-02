@@ -15,17 +15,13 @@ export class StoreFeatueProductsComponent {
     quantity: new FormControl(),
   });
 
-
-  products$ = this.http.get('/api/product')
-
+  products$ = this.http.get('/api/product');
 
   constructor(private http: HttpClient) {}
 
   onSubmit() {
     if (this.form.valid) {
-
-      const observer$ = this.http
-        .post('/api/product', this.form.value);
+      const observer$ = this.http.post('/api/product', this.form.value);
 
       observer$.subscribe(console.log);
     }
